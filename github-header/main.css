@@ -1,0 +1,79 @@
+.body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 1250px;
+    margin: auto;
+}
+
+.container-left {
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.logo {
+    display: block;
+    float: left;
+    margin-right: 5px;
+}
+
+.menu {
+    float: left;
+}
+
+.container-left .menu-item {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 12px;
+}
+
+.navigate {
+    display: block;
+    float: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.container-right {
+    float: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.search-box {
+
+    float: left;
+    margin-left: 12px;
+}
+
+.search-box input {
+    color: gray;
+    height: 33px;
+    width: 230px;
+    border-radius: 4px;
+}
+
+.container-right .menu-item {
+    float: left;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 12px;
+    padding: 4px;
+
+}
+
+
+.sign-up {
+    border: 0.7px solid midnightblue;
+    border-radius: 4px;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
