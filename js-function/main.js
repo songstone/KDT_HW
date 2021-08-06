@@ -14,7 +14,7 @@ const data = [
 
 // 사용자 입력 받기
 const line = prompt('최대 금액을 입력해주세요.');
-const amount = +line;
+const amount = parseInt(line);
 
 // 주어진 금액으로 살 수 있는 가장 비싼 상품을 구함
 const item = getItemByAmount(data, amount);
@@ -24,7 +24,8 @@ const msg = item ?
     '살 수 있는 상품이 없습니다.';
 
 // 결과 출력
-alert(msg);
+alert(msg)
+console.log(msg)
 
 // 아래에 getItemByAmount 함수를 작성하세요.
 function getItemByAmount(array, amount) {
@@ -32,9 +33,9 @@ function getItemByAmount(array, amount) {
     if ((0 <= amount) && (amount < Number.MAX_SAFE_INTEGER)) { //유효한 숫자 범위 내에서 함수 실행문
         const list = array.filter(item => (item.price <= amount)); //가진 금액보다 작은 가격의 리스트 필터
         let maxItem = list[0]; //최대가격 상품을 찾기 위한 초기값
-        for (let i = 1; i < list.length; i++) { //최대가격 상품 검색
-            if (list[i].price > maxItem.price) { //최대가격 상품 업데이트 조건
-                maxItem = list[i];
+        for (let item of list) { //최대가격 상품 검색
+            if (item.price > maxItem.price) { //최대가격 상품 업데이트 조건
+                maxItem = item;
             }
         }
         return maxItem; //최대 가격 상품 리턴
