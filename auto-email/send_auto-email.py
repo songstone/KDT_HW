@@ -4,11 +4,18 @@ from email.mime.multipart import MIMEMultipart
 from openpyxl import load_workbook
 import smtplib
 import re
+import json
+
+##개인정보 json파일 열기
+with open('my.json') as f: 
+    config = json.load(f)
 
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 465
-SMTP_USER = 'thdtmdgus0730@gmail.com'
-SMTP_PASSWORD = 'songstone1!'
+
+##json파일에서 참조
+SMTP_USER = config['email']
+SMTP_PASSWORD = config['password']
 
 ##메일 보내는 함수(default)
 def send_mail(name, addr, subject, contents, attachment=None):
@@ -52,7 +59,9 @@ crawler = NaverNewsCrawler(keyword)
 
 ## 저장 파일명 엑셀파일인지 체크 후 키워드 관련 뉴스 리스트 파일형태로 저장
 while True:
-    news_list_file = input('뉴스를 저장할 파일 이름을 엑셀파일 형식으로 입력하세요 ex)sample.xlsx : ')
+    news_list_file = input('뉴스를 저장할 파일 이름을 입력하세요(엑셀) : ')
+    if (news_list_file.find('.')== -1):
+        news_list_file = news_list_file + '.xlsx'
     if (news_list_file[len(news_list_file)-5:] == '.xlsx'):
         crawler.get_news(news_list_file)
         break
