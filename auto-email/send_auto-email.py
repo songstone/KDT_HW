@@ -60,7 +60,7 @@ crawler = NaverNewsCrawler(keyword)
 ## 저장 파일명 엑셀파일인지 체크 후 키워드 관련 뉴스 리스트 파일형태로 저장
 while True:
     news_list_file = input('뉴스를 저장할 파일 이름을 입력하세요(엑셀) : ')
-    if (news_list_file.find('.')== -1):
+    if ('.' not in news_list_file):
         news_list_file = news_list_file + '.xlsx'
     if (news_list_file[len(news_list_file)-5:] == '.xlsx'):
         crawler.get_news(news_list_file)
