@@ -7,8 +7,8 @@ import re
 import json
 
 ##개인정보 json파일 열기
-with open('my.json') as f: 
-    config = json.load(f)
+with open('my.json') as info: 
+    config = json.load(info)
 
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 465
@@ -19,7 +19,7 @@ SMTP_PASSWORD = config['password']
 
 ##메일 보내는 함수(default)
 def send_mail(name, addr, subject, contents, attachment=None):
-    if not re.match('(^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', addr):
+    if not re.match('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', addr):
         print('Wrong email')
         return
 
@@ -74,11 +74,7 @@ wb = load_workbook('email_list.xlsx',read_only=True)
 data = wb.active
 
 ## 이메일리스트의 이름, 이메일 주소로 메일 보내기
-first_row = True  # 첫번째 행 판별 기본값
-for row in data.iter_rows():
-    if first_row:
-        first_row = False
-        continue
+for row in data.iter_rows(min_row=2):
     name = row[1].value
     addr = row[2].value 
     send_mail(name,addr,keyword+' 관련 뉴스 리스트입니다.',contents,news_list_file)
